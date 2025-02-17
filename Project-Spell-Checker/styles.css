@@ -1,0 +1,61 @@
+* {
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #002b36;
+  width: 100%;
+  height: 100%;
+}
+main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #eaedf0;
+  padding: 30px;
+  border-radius: 5px;
+  color: #002b36;
+}
+
+textarea {
+  width: 90%;
+  height: 100px;
+  padding: 5px;
+  outline: none;
+  border: none;
+  margin: 20px auto;
+  display: block;
+  font-size: 16px;
+}
+
+button {
+  width: 40%;
+  background-color: #002b36;
+  padding: 8px;
+  font-size: 18px;
+  color: #eaedf0;
+  border-radius: 5px;
+  margin:15px auto;
+  display: block;
+}
+
+#misspelled {
+  background-color: rgb(187, 187, 187);
+  padding: 0px;
+  margin: 15px 20px;
+  font-size: medium;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.correct {
+  color: green;
+}
+
+.incorrect {
+  color: red;
+}

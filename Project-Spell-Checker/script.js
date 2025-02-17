@@ -1,11 +1,85 @@
-// This is a placeholder file which shows how you can access JSON data defined in other files.
-// It can be loaded into index.html.
-// You can delete the contents of the file once you have understood how it works.
-// Note that when running locally, in order to open a web page which uses modules, you must serve the directory over HTTP e.g. with https://www.npmjs.com/package/http-server
-// You can't open the index.html file using a file:// URL.
-
 import words from "./words.json" with { type: "json" };
 
-window.onload = function() {
-    document.querySelector("body").innerText = `There are ${words.length} words in the Basic English dictionary`;
+const textarea = document.getElementById('user-input');
+const mistakesContainer = document.getElementById('misspelled');
+
+const storedWords = JSON.parse(localStorage.getItem('basicWords'));
+const initialWords = storedWords || [];
+const basicWords = new Set([...initialWords, ...words]);
+
+
+const checkSpelling = (userInput) => {
+    const correctedWords = userInput.replace(/[,.?!":%£;$*(){},@~#/|]/g, ' ');
+    const allWordsEntered = correctedWords.split(/\s+/);
+
+    return allWordsEntered.map(word => {
+        if (!word) return null;
+
+        const originalWord = userInput.split(/\s+/).find(w => w.toLowerCase() === word);
+
+        if (word[0] === word[0].toUpperCase()) return null;
+
+        if (word.includes('-')) {
+            const parts = word.split('-');
+            return parts.some(part => !basicWords.has(part.toLowerCase())) ? word : null;
+        }
+
+        return basicWords.has(word.toLowerCase()) ? null : word;
+    }).filter(word => word);
+};
+
+const displayMistakes = () => {
+    const userInput = textarea.value;
+
+    const mistakes = checkSpelling(userInput);
+
+    if (mistakes.length > 0) {
+        mistakesContainer.innerHTML = '';
+        const p = document.createElement('p');
+        const addBtn = document.createElement('button');
+        const span = document.createElement('span');
+        addBtn.innerHTML = mistakes.length === 1 ? 'Add word' : 'Add Words';
+        p.classList.add('misspelled');
+        span.innerHTML = mistakes.join(', ');
+        span.classList.add('incorrect');
+        p.appendChild(span);
+        p.innerHTML = `Spelling mistakes: <span class='incorrect'>${mistakes.join(', ')}</span>`;
+        mistakesContainer.appendChild(p);
+        mistakesContainer.appendChild(addBtn);
+        
+        addBtn.addEventListener('click', ()=> {
+
+            mistakes.forEach(word => {
+                basicWords.add(word.toLowerCase());
+                localStorage.setItem('basicWords', JSON.stringify([...basicWords]));
+            });
+            mistakesContainer.innerHTML = '';
+        });
+
+    }
+    else {
+        mistakesContainer.innerHTML = '';
+        const noMistakeparag = document.createElement('p');
+        noMistakeparag.innerHTML = 'No spelling mistakes detected';
+        noMistakeparag.classList.add('correct');
+        mistakesContainer.appendChild(noMistakeparag);
+
+        console.log(noMistakeparag);
+    }
+
 }
+
+export const setupApp = () => {    
+    const checkBtn = document.getElementById('check-btn');
+
+    if (checkBtn) {
+        checkBtn.addEventListener('click', () => {
+            displayMistakes();
+        });
+    }
+};
+
+
+setupApp();
+
+export { checkSpelling }
