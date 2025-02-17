@@ -1,5 +1,5 @@
 TN:
-SF:Project-Spell-Checker/script.js
+SF:script.js
 FN:11,(anonymous_0)
 FN:15,(anonymous_1)
 FN:18,(anonymous_2)
@@ -96,7 +96,7 @@ BRF:18
 BRH:12
 end_of_record
 TN:
-SF:Project-Spell-Checker/sum.js
+SF:sum.js
 FN:1,sum
 FNF:1
 FNH:1
