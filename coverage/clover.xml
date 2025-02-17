@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1739807184214" clover="3.2.0">
-  <project timestamp="1739807184214" name="All files">
+<coverage generated="1739811455062" clover="3.2.0">
+  <project timestamp="1739811455062" name="All files">
     <metrics statements="52" coveredstatements="24" conditionals="18" coveredconditionals="12" methods="11" coveredmethods="7" elements="81" coveredelements="43" complexity="0" loc="52" ncloc="52" packages="1" files="2" classes="2"/>
-    <file name="script.js" path="/home/gabriel/Desktop/Solo Project: Spell-Checker/Project-Spell-Checker/Project-Spell-Checker/script.js">
+    <file name="script.js" path="/home/gabriel/Desktop/Solo Project: Spell-Checker/Project-Spell-Checker/script.js">
       <metrics statements="50" coveredstatements="22" conditionals="18" coveredconditionals="12" methods="10" coveredmethods="6"/>
       <line num="3" count="1" type="stmt"/>
       <line num="4" count="1" type="stmt"/>
@@ -55,7 +55,7 @@
       <line num="77" count="0" type="stmt"/>
       <line num="83" count="1" type="stmt"/>
     </file>
-    <file name="sum.js" path="/home/gabriel/Desktop/Solo Project: Spell-Checker/Project-Spell-Checker/Project-Spell-Checker/sum.js">
+    <file name="sum.js" path="/home/gabriel/Desktop/Solo Project: Spell-Checker/Project-Spell-Checker/sum.js">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <line num="2" count="1" type="stmt"/>
       <line num="5" count="1" type="stmt"/>
