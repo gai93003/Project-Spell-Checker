@@ -30,12 +30,12 @@ input,button {
   outline: none;
   border: none;
   margin:15px auto;
-
+  height: 50px;
 }
 
 input {
-  background-color: #013f4ee8;
-  color: #c9ccce;
+  background-color: #808485e8;
+  color: #1b1b1b;
 }
 
 button {
