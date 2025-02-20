@@ -46,7 +46,7 @@ button {
 #misspelled {
   background-color: rgb(187, 187, 187);
   padding: 0px;
-  margin: 15px 20px;
+  margin: 15px 10px;
   font-size: medium;
   display: flex;
   flex-direction: column;

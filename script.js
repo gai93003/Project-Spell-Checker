@@ -17,7 +17,7 @@ const checkSpelling = (userInput) => {
 
         const originalWord = userInput.split(/\s+/).find(w => w.toLowerCase() === word);
 
-        if (word[0] === word[0].toUpperCase()) return null;
+        if (word[0] === word[0].toUpperCase() && word[1] === word[1].toLowerCase() ) return null;
 
         if (word.includes('-')) {
             const parts = word.split('-');
@@ -32,6 +32,11 @@ const displayMistakes = () => {
     const userInput = textarea.value;
 
     const mistakes = checkSpelling(userInput);
+    const noMistakeparag = document.createElement('p');
+    noMistakeparag.innerHTML = 'No spelling mistakes detected';
+    noMistakeparag.classList.add('correct');
+
+
 
     if (mistakes.length > 0) {
         mistakesContainer.innerHTML = '';
@@ -53,18 +58,14 @@ const displayMistakes = () => {
                 basicWords.add(word.toLowerCase());
                 localStorage.setItem('basicWords', JSON.stringify([...basicWords]));
             });
-            mistakesContainer.innerHTML = '';
+            mistakesContainer.innerHTML = ' ';
+            mistakesContainer.appendChild(noMistakeparag);
         });
 
     }
     else {
         mistakesContainer.innerHTML = '';
-        const noMistakeparag = document.createElement('p');
-        noMistakeparag.innerHTML = 'No spelling mistakes detected';
-        noMistakeparag.classList.add('correct');
         mistakesContainer.appendChild(noMistakeparag);
-
-        console.log(noMistakeparag);
     }
 
 }
